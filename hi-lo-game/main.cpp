@@ -6,12 +6,27 @@ void ignoreLine(){
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
-// note : input validation should be added
 int getGuess(int time){
-    std::cout << "Guess  #" << time << ':';
-    int x {};
-    std::cin >> x;
-    return x;
+    constexpr int maxGuess {100};
+    constexpr int minGuess {1};
+    while(true) {
+        std::cout << "Guess  #" << time << ':';
+        int x{};
+        std::cin >> x;
+        
+        if(!std::cin){
+            std::cin.clear();
+            ignoreLine();
+        }
+        else if(x > maxGuess || x < minGuess){
+            std::cout << "Invalid guess !\n";
+            std::cin.clear();
+            ignoreLine();
+        }
+        else {
+            return x;
+        }
+    }
 }
 
 bool playAgain(){
