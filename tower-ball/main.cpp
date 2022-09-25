@@ -42,8 +42,6 @@ int main(){
     const double initialHeight {getInitialHeight()};
     int seconds {0};
 
-    std::cout << calculateHeight(initialHeight, 3);
-
     while(true) {
         double height { calculateHeight(initialHeight, seconds) };
         printHeight(height, seconds);
